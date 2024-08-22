@@ -7,7 +7,7 @@ export const Header = () => {
     <header>
       <div className="container">
         <h1>Redux App</h1>
-        <img src={Image} />
+        <img src={Image} alt="cartimg" />
       </div>
     </header>
   );

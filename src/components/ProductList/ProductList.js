@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./ProductList.css";
 import products from "../api/products.json";
 import { BeforeCart } from "./cartButtons/BeforeCart";
 import { AfterCart } from "./cartButtons/AfterCart";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 export const ProductList = () => {
-  const { cartCount } = useSelector((state) => state.cart);
+  const { cartCount, cartList } = useSelector((state) => state.cart);
 
+  console.log(cartList);
   return (
     <section className="container">
       {products.map((product, key) => (
@@ -15,7 +16,7 @@ export const ProductList = () => {
           <img src={product?.image} alt="" />
           <h3>{product?.title}</h3>
 
-          {cartCount > 0 ? <AfterCart /> : <BeforeCart />}
+          {cartCount > 0 ? <AfterCart /> : <BeforeCart product={product} />}
         </div>
       ))}
     </section>
